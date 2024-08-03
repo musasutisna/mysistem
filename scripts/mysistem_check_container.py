@@ -49,4 +49,9 @@ async def checkMultipleContainer(index):
     await checkMultipleContainer(index + 1)
 
 if __name__ == "__main__":
-  asyncio.run(checkMultipleContainer(0))  
+  loop = asyncio.get_event_loop()
+
+  try:
+    loop.run_until_complete(checkMultipleContainer(0))
+  finally:
+    loop.close()
