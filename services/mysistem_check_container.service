@@ -1,0 +1,16 @@
+[Unit]
+Description=mysistem to check and reprot docker container status
+
+[Service]
+User=root
+Type=simple
+Restart=always
+RestartSec=60min
+PIDFile=/var/run/mysistem_check_container.pid
+EnvironmentFile=/usr/share/mysistem/environment
+Environment="script=/usr/share/mysistem/scripts/mysistem_check_container.py"
+Environment="log=/usr/share/mysistem/logs/mysistem_check_container"
+ExecStart=/bin/bash /usr/share/mysistem/scripts/runtime.sh
+
+[Install]
+WantedBy=multi-user.target
